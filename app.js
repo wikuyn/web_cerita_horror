@@ -9,7 +9,7 @@ const flash = require("connect-flash");
 // import mongoose
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb+srv://wikudev:wikudev@cluster0.8ttdqiw.mongodb.net/db_cerita?retryWrites=true&w=majority",
+  "mongodb+srv://wikudev:daru161199@cluster0.8ttdqiw.mongodb.net/db_cerita?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
