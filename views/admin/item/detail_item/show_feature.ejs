@@ -1,0 +1,133 @@
+<div
+  class="tab-pane fade show active"
+  id="show-feature"
+  role="tabpanel"
+  aria-labelledby="home-tab"
+>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <form
+            action="/admin/item/add/feature"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                placeholder="Enter title"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Thumbnail</label>
+              <input
+                type="text"
+                class="form-control"
+                name="thumbnail"
+                placeholder="Enter thumbnail"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Nama Penulis</label>
+              <input
+                type="text"
+                class="form-control"
+                name="penulis"
+                placeholder="Enter nama penulis"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Url Penulis</label>
+              <input
+                type="text"
+                class="form-control"
+                name="urlPenulis"
+                placeholder="Enter url penulis"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="name">Description</label>
+                <textarea name="description" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Image</label>
+              <input type="file" class="form-control" name="image" required />
+            </div>
+            <input type="hidden" value="<%= itemId %>" name="itemId" />
+            <button type="submit" class="btn btn-primary">save</button>
+          </form>
+        </div>
+        <div class="col-md-7">
+          <div class="table-responsive">
+            <table
+              class="table table-bordered"
+              id="dataTable"
+              width="100%"
+              cellspacing="0"
+            >
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Title</th>
+                  <th>Thumbnail</th>
+                  <th>Image URL</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% for(let i = 0; i < feature.length; i++){ %>
+                <tr>
+                  <td><%= i + 1 %></td>
+                  <td><%= feature[i].title %></td>
+                  <td><%= feature[i].thumbnail %></td>
+                  <td>
+                    <img
+                      src="https://wikudev-admin.herokuapp.com/<%= feature[i].imageUrl %>"
+                      alt="imageUrl"
+                      width="70px"
+                    />
+                  </td>
+                  <td>
+                    <form
+                      action="/admin/item/<%= itemId %>/feature/<%= feature[i].id %>?_method=DELETE"
+                      method="POST"
+                    >
+                      <a
+                        href="javascript:void();"
+                        type="button"
+                        class="btn btn-warning btn-circle btn-sm button-update"
+                        data-id="<%= feature[i].id %>"
+                        data-name="<%= feature[i].name %>"
+                        data-qty="<%= feature[i].qty %>"
+                        ><i class="fas fa-edit"></i
+                      ></a>
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-circle btn-sm"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
